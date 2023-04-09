@@ -453,5 +453,52 @@ word
 word”””
 ￼
 
-Splitting Strings
+Regular Expressions (Finding Patterns in Strings)
+
+The * symbol is used to represent the repetition of the character preceding it. It basically tells us that “the character before me can exist 0 or more times”
+
+“ab+c”: ac, abc, abbc, abbbc, etc. The character ‘b’ can be present from 0 times to an infinite number of times.
+
+The + symbol is also used to represent the repetition of the character preceding it. However, unlike *, the character must be present at least once.
+
+“ab+c”:  abc, abbc, abbbc, etc. The character ‘b’ can be present from 1 time to an infinite number of times.
+
+Curly brackets {} can be used along with the number of repetitions we want in the pattern
+“ab{2}c”: abbc
+“Ab{2, 5}: abbc, abbbc, abbbbc, abbbbbc
+
+“[abc]”: a, b, c, ab, ac, ba, bc, ca, cb, abc
+“[abc]+”: a, b, c, ab, ac, ba, bc, ca, cb, abc, abb, aaa, bbb, ccc, acc, bac, etc.
+
+“[a-zA-Z]”: all letters of the alphabet
+
+“[1-9]”:  1, 2, 3, 4, 5, 6, 7, 8, 9
+
+“[^abc]”: all letters except a, b, and c
+
+Implementing Regular Expressions in Scala
+
+Regular expressions in Scala need to include the extension .r after the expression.
+“ab*c”.r
+
+findFirstIn syntax:
+variableName of expression to find.findFirstIn(variable name of String)
+OR variableName of expression to find.findFirstIn(String Literal)
+
+val expressionToFind = "the".r
+val stringToFindExpression = "the little girl talked to the wolf"
+val match1 = expressionToFind.findFirstIn(stringToFindExpression) // the
+
+ findAllIn
+syntax:
+variableName of expression to find.findAllIn(variable name of String)
+OR variableName of expression to find.findAllIn(String Literal)
+
+val expressionToFind = "[1-5]+".r
+val stringToFindExpression = "12 67 93 48 51"
+val match1 = expressionToFind.findAllIn(stringToFindExpression) // [12 3 4 51]
+
+val expressionToFind = "[1-5]{2}+".r
+val stringToFindExpression = "12 67 93 48 51"
+val match1 = expressionToFind.findAllIn(stringToFindExpression) // [12, 51]
 
