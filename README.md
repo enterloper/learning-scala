@@ -1,6 +1,3 @@
-# learning-scala
-A place for me to store notes as I figure out Scala
-
 Scala Notes
 Features of Scala
 * Type Inference
@@ -309,4 +306,152 @@ println("Using infix notation: "  + infix)
 println("Using ordinary method call: " + ordinary)
 
 
+
+export interface Question {
+  answers: ['True', 'False', 'Not Applicable'] | [];
+  choices: ['True', 'False', 'Not Applicable'] | [];
+  educationText?: string;
+  helpText?: string;
+  id?: string;
+  numbering?: string;
+  permissibleChoices?: ['True', 'Not Applicable'] | [];
+  surveyType?: string;
+  text?: string;
+  type?: 'radio' | 'checkbox';
+}
+
+Types of Bitwise Operators
+Operator	Name	Use
+&	Bitwise AND	If the corresponding bit in both operands is 1 it will give a 1, else 0
+|	Bitwise OR	If the corresponding bit in at least one operand is 1 it will give a 1 else 0
+^	Bitwise XOR	If the corresponding bit in only one operand is 1 it will give a 1 else 0
+~	Bitwise Ones Complement	Copies a bit to the result after reversing it
+
+￼
+
+
+val A = 12
+val B = 5
+
+println(~A) => bitwise conversion == -1100 (negated bits plus an extra bit == -11101)  == -13
+println(~B) => bitwise conversion == -101 (negated bits plus an extra bit == -111)  == -6
+println(A & B) bitwise conversion == 1100 & 101 -> 100 == 4
+println(A | B) bitwise conversion == 1100 | 101 -> 1101 == 13
+println(A ^ B) bitwise conversion == 1100 ^ 101 -> 1001 == 9
+
+Assignment Operators (Must use on values initiated with “var”)
+Operator	Use
++=	Adds two operands and assigns the result to the left operand
+-=	Subtracts the second operand from the first and assigns the result to the left operand
+*=	Multiplies both operands and assigns the result to the left operand
+/=	Divides the first operand by the second operand and assigns the result to the left operand
+%=	Finds the remainder after division of one number by another and assigns the result to the left operand
+var A = 10
+var B = 7
+
+print("Before using an assignment operator: ")
+println(A) => 10
+
+A += B
+
+print("After using an assignment operator: ")
+println(A) => 17
+
+Strings
+String Interpolation
+There are three inbuilt interpolation methods:
+1. s
+2. f
+3. raw
+
+The s String Interpolator
+For string interpolation with s, we prepend an s to any string literal. This allows us to use variables inside a string.
+
+val country = "Japan"
+println(s"I want to visit $country!")
+println(s"3 + 4 = ${3 + 4}")
+
+￼
+
+The f String Interpolator
+The f string interpolator is Scala’s printf. For string interpolation with f, we prepend an f to any string literal. This allows us to create formatted strings. When using the f interpolator, all references to variables and expressions should be followed by a printf-style format string, like %f.
+
+val pi = 3.14159F
+println(f"the value of pi is $pi%.2f")
+
+In the code above, f"the value of pi is ＄pi%.2f" is a processed string literal. The f prepended before the string is letting the compiler know that the string should be processed using the f interpolator. pi is our variable identifier and %.2f is our format specifier and is formatting the string by telling the compiler to only print the floating-point number pi up to two decimal places.
+
+￼
+
+￼
+
+Flag
+ Flags are general modifiers and are mostly used to format integers and floating-point numbers. Below is a list of flags and what they are used for.
+Flag	Use
+-	left justify
++	Add a + sign
+0	Add padded zeros
+,	Add a local-specific grouping separator
+
+Width The width specifies the minimum length of the output. For example, if we say %10d, we mean that the output of the integer should be a minimum of 10 characters. To fulfill our requirement, the compiler will insert spaces before our argument until it is 
+10 characters long, pushing the argument further right.
+
+val testWidth = 123
+
+println(f"Without specifying the width, we get $testWidth") => “Without specifying the width, we get 123”
+println(f"With specifying the width, we get $testWidth%10d") => “With specifying the width, we get        123”
+
+Precision
+Precision can only be used on floating-point numbers and simply tells you how many places after the decimal point do you want to output. 
+
+Conversion-Characters
+Conversion-characters do the actual formatting and determine how the argument is to be formatted. Below are some common ones.
+Character	Use
+s	formats strings
+d	formats decimal integers
+f	formats floating-point numbers
+t	formats date/time values
+
+val insertSeparator = 1000000
+
+println(f"Without Formatting: $insertSeparator") => Without Formatting: 1000000
+println(f"With Formatting: $insertSeparator%,d") => With Formatting: 1,000,000
+
+
+The code below use the flag 0 to insert zeros before the argument, the precision informs the compiler which decimal place the output should be printed (3 decimal places). The 0 flag works simultaneously with width, which informs the compiler to fill the required length with empty characters, or in this case zeroes.
+
+val insertZeros = 1.23456F
+
+println(f"Without Formatting: $insertZeros") => Without Formatting: 1.23456
+println(f"With Formatting: $insertZeros%010.3f") => With Formatting: 000001.235
+
+
+val leftJustify = 12345
+
+println(f"Without Formatting: $leftJustify is the output") => Without Formatting: 12345 is the output
+println(f"With Width: $leftJustify%10d is the output") => With Width:      12345 is the output
+println(f"With Flag: $leftJustify%-10d is the output") => With Flag: 12345      is the output
+
+
+The raw String Interpolator
+For string interpolation with raw, we prepend the word raw to any string literal. This allows us to print characters symbols within strings.
+
+println("Without Raw:\nFirst\nSecond")
+// output: Without Raw:
+First
+Second
+
+println(raw"With Raw:\nFirst\nSecond") => With Raw:\nFirst\nSecond
+￼
+
+Creating Multiline Strings
+val multilineString = "This is a \nmultiline string \nconsisting of \nmultiple lines"
+
+Altenatively, one could use the three successive opening and closing quotation marks.
+“””Word
+word
+word”””
+￼
+
+Splitting Strings
 
