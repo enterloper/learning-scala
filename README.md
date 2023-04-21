@@ -502,3 +502,156 @@ val expressionToFind = "[1-5]{2}+".r
 val stringToFindExpression = "12 67 93 48 51"
 val match1 = expressionToFind.findAllIn(stringToFindExpression) // [12, 51]
 
+replaceFirst
+Called on the string that needs to be modified either directly or using a string variable.
+
+StringLiteral.replaceFirst(“SearchExpression”, “ReplaceExpression”)
+OR VariableName of String.replaceFirst(“SearchExpression”, “ReplaceExpression”)
+
+val replaceIn = "8201530"
+val replaced = replaceIn.replaceFirst("[01]", "X")
+println(replaced) // “82X1530”
+
+replaceFirstIn
+Called on the regular expression that needs to be replaced rather than the string that needs to be modified.
+
+Regex.replaceFirstIn(“SearchString”, “ReplaceExpression”)
+OR VariableName of String.replaceFirstLn(“SearchExpression”, “ReplaceExpression”)
+
+val regularExp = "H".r
+val replaceIn = "Hello World!"
+val replaced = regularExp.replaceFirstIn(replaceIn,"J")
+println(replaced) // “Jello World!”
+
+replaceAll
+Called on the string that needs to be modified either directly or using a string variable.
+
+StringLiteral.replaceAll(“SearchExpression”, “ReplaceExpression”)
+OR
+VariableName of String.replaceAll(“SearchExpression”, “ReplaceExpression”)
+
+val replaceIn = "8201530"
+val replaced = replaceIn.replaceAll("[01]", "X")
+println(replaced) // “82XX53X”
+
+replaceAllIn
+Called on the regular expression that needs to be replaced rather than the string that needs to be modified.
+
+Regex.replaceAllIn(“SearchString”, “ReplaceExpression”)
+
+val regularExp = "[a-z]+".r
+val replaceIn = "dk79rx5c4lj2c8ge"
+val replaced = regularExp.replaceAllIn(replaceIn,"1")
+println(replaced) // “179151412181”
+
+matches
+Called on the sting that you want to compare a regular expression with. It’s a Boolean type, returning true if the string matches and false if it doesn’t.
+
+VariableName matches(regular expression)
+OR
+StringLiteral.matches(regular expression)
+
+val stringMatch = "ab7"
+val match1 = stringMatch.matches("[a-zA-Z0-9]{4}")
+println(match1) // false (because string should be four characters long
+
+
+Equals
+Works just like the equally operator ==. Called on one string and takes another string as an argument. Both strings must be identical.
+
+StringLiteral.equals(StringLiteral)
+OR
+variableName.equals(variableName)
+
+val string1 = "Educative”
+val string2 = "educative”
+val comparingStrings = string1.equals(string2)
+
+println(comparingStrings) // false
+
+compareTo
+Compares two string lexicographically (in alphabetical order). compareTo returns an integer and that integer is the mathematical difference between strings. If the strings are identical, 0 is returned. If a positive number is returned, that means the string1 is greater than string2. Conversely, if a negative number is returned, string1 is less than string 2.
+
+compareTo compares each character of string1 with the character in same position as string2.  String1.compareTo(String2) == string1 > string2 => positive number || string1 < string2 => negative number || string1 == string2 => 0
+
+val string1 = "This is Educative"
+val string2 = "Hello Scala"
+val string3 = "Hello Scala"
+
+val lexiCompare1 = string1.compareTo(string2) //string2-string1
+val lexiCompare2 = string2.compareTo(string3) //string3-string2
+println(s"Comparing string1 and string2: $lexiCompare1")  // 12
+println(s"Comparing string2 and string3: $lexiCompare2") // 0
+
+equalsIgnoreCase
+Works exactly like equals with the added feature (or lack thereof) that it ignores cases. So, for equalsIgnoreCase, "a" is equivalent to "A". The syntax is identical to equals.
+
+StringLiteral.equalsIgnoreCase(StringLiteral)
+OR
+variableName.equalsIgnoreCase(variableName)
+
+val string1 = "Educative”
+val string2 = "educative”
+val comparingStrings = string1.equals(string2)
+
+println(comparingStrings) // true
+
+Collection Library
+Mutable Collections
+Mutable collections are collections which can be updated. Elements can be added to the collection and can be removed or manipulated. In this case, the collection itself will be getting modified.
+Immutable Collections
+Immutable collections cannot be updated. When you add, remove, or manipulate an element in an immutable collection, you are creating a new collection and leaving the old one unchanged.
+Sequences, Sets, and Maps
+The collection library takes on a hierarchical structure. At the top of the library, there are three main categories of collection classes under which different collections lie:
+* Sequences - Seq
+* Sets - Set
+* Maps - Map
+All three classes contain both mutable and immutable collections.
+Remember, Seq here would be acting as a blueprint with which you can create objects that represent sequences.
+￼
+
+Sequences
+Collections which are part of the Seq class, store elements at fixed index positions, with the index starting at 0.
+Each element has a specified location in the sequence and therefore, can be located very easily.
+
+Seq(2, 4, 6, 8, 10)
+
+Sets
+Collections which are the Set class contain sets of elements with no element existing more than once, i.e, no duplicates.
+
+Set(“apple”, “orange”, “banana”, “nutmeg”, “grape”)
+
+Maps
+Collections which are of the Map class consist of pairs of keys and values with each value being associated with a unique key.
+
+Map((“a”, 25) (“b”,50) (“c”, 75))
+
+apply
+apply is a method which has a single parameter and is available to all the collections in the collection library.
+
+- Seq
+    - For sequence collections, the argument passed to apply specifies an index. apply returns the element at the specified index.
+
+val seqCollection = Seq(2,4,6,8)
+val result = seqCollection.apply(1)
+print(result) // true
+
+- Map
+    - For map collections, the argument passed to apply specifies a key. apply returns the value of the specified key.
+
+	     val mapCollection = Map(("a",25),("b",50),("c",75))
+	     val result = mapCollection.apply("c")
+
+	     print(result) // 75
+
+- Sequences
+- The sequence class is further divided into two classes IndexedSeq and LinearSeq.
+- IndexSeq and LinearSeq do not add new operations to the Seq class, but each offers different performance characteristics.
+-  Collections of the LinearSeq class have efficient head and tail operations.
+- What this means is that the collection is structured in such a way that it is not computationally difficult to access the head (first element) of the collection or the tail (last element) of the collection.
+- Furthermore, IndexedSeq collections have efficient apply and length operations.
+
+￼
+
+
+
