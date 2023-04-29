@@ -653,5 +653,496 @@ print(result) // true
 
 ￼
 
+Collection Methods
+
+forEach
+forEach is a method called on a collection of any type and takes a single argument. The argument must be a function/method that will be applied to each individual element of the collection.
+
+collectionName.foreach(method)
+
+val collection = Seq(2,4,6,8,10)
+Collection.forEach(println)
+
+Arrays Arrays in Scala are collections which come under the Sequence class. They are a mutable collection and thus the inner elements can be modified.
+
+Syntax for creating an array: val arrayName = Array(element1, element2, element3, …, elementn)
+
+The Array method is creating an Array object.
+
+val intArray = Array(1,2,3,4,5,6,7,8,9)
+inArray.foreach(println)
+
+Scala arrays can use all the operations of the sequence class.
+
+val intArray = Array(1,2,3,4,5,6,7,8,9)
+val evenArray = intArray.filter(_ % 2 == 0)
+
+evenArray.foreach(println) // prints only the even integers in the intArray on separate lines
+
+val intArray = Array(1,2,3,4,5,6,7,8,9,10)
+val evenArray = intArray.filter(_ % 2 == 0)
+val doubleArray = evenArray.map(_ * 2)
+val finalArray = doubleArray.reverse
+finalArray.foreach(println) val colorArray = new Array[String](3)
+
+val colorArray = new Array[String](3)
+colorArray.foreach(println) // prints “null” three times on separate lines
+colorArray(0) = "red"
+colorArray(1) = "blue"
+colorArray(2) = "yellow"
+colorArray.foreach(println) // prints the colors on separate lines
+
+Range
+Range populates an array with a starting value (Int) and takes an end number.
+val array1 = Array.range(0, 5) // range(start, number of elements)
+array1.foreach(println) // prints 0-5 on separate lines
+
+val array2 = Array.range(0, 10, 3) //range(start, end, interval)
+array2.foreach(println) // prints 0, 3, 6, 9 on separate lines
+
+val array3 = Array.fill(2)("educative") //fill(number of elements)(value)
+array3.foreach(println)  // prints “educative” on twice separate lines
+
+val array4 = "hello".toArray // converts arguments to an array
+array4.foreach(println) // prints “h”, “e”, “l”, “l”, “o” on separate lines
+
+val intArray = Array(17, 34, 23, 6, 50)
+val elem = intArray(3)
+
+println(elem) // 6
+
+val intArray = Array(17, 34, 23, 6, 50)
+val len = intArray.length
+
+println(len) // 5
+
+ArrayBuffers
+ArrayBuffer is under the Sequence Class. Also a mutable collection, meaning when elements in an ArrayBuffer are modified, the original ArrayBuffer is updated.
+ArrayBuffers are very similar to arrays with the difference that you can add and remove elements from an ArrayBuffer while adding and removing elements is not possible in simple Arrays.
+
+ArrayBuffer must be imported for use: 
+import scala.collection.mutable.ArrayBuffer
+val myFirstArrayBuffer = ArrayBuffer(1,2,3,4,5)
+myFirstArrayBuffer.foreach(println)
+
+To initialize an ArrayBuffer without populating it, we need to specify the type of element it can store.
+Mentioning the length is not required as the ArrayBuffer will adjust the allocated space automatically when you insert or delete elements.
+
+val arrayBufferName = new ArrayBuffer[DataType]()
+
+val newArrayBuffer = new ArrayBuffer[Int]()
+
+Adding elements to an ArrayBuffer
+
+import scala.collection.mutable.ArrayBuffer
+val newArrayBuff = new ArrayBuffer[Int]()
+
+newArrayBuff += 6
+newArrayBuff += 15
+newArrayBuff += 78 newArrayBuff += 4
+newArrayBuff += 32
+newArrayBuff += 11
+
+// Driver Code
+newArrayBuff.foreach(println)
+println(newArrayBuff)
+
+Deleting elements from an ArrayBuffer
+
+import scala.collection.mutable.ArrayBuffer
+val newArrayBuff = new ArrayBuffer[Int]()
+
+newArrayBuff += 6
+newArrayBuff += 15
+newArrayBuff += 78
+newArrayBuff += 4
+newArrayBuff += 32
+newArrayBuff += 11
+
+newArrayBuff -= 78 //Remove the element with the value 78
+
+newArrayBuff.foreach(println)
+
+Remove method
+
+import scala.collection.mutable.ArrayBuffer
+val newArrayBuff = new ArrayBuffer[Int]()
+
+newArrayBuff += 6
+newArrayBuff += 15
+newArrayBuff += 78
+newArrayBuff += 4
+newArrayBuff += 32
+newArrayBuff += 11
+
+newArrayBuff -= 78
+
+newArrayBuff.remove(4) //Remove the element at the 4th index
+
+newArrayBuff.foreach(println)
+
+Clear method
+
+import scala.collection.mutable.ArrayBuffer
+val newArrayBuff = new ArrayBuffer[Int]()
+
+newArrayBuff += 6
+newArrayBuff += 15
+newArrayBuff += 78
+newArrayBuff += 4
+newArrayBuff += 32
+newArrayBuff += 11
+
+newArrayBuff -= 78
+
+newArrayBuff.remove(4)
+
+newArrayBuff.clear() //Remove all the elements from newArrayBuff
+
+newArrayBuff.foreach(println)
+
+
+Lists in Scala
+Lists in Scala is a collection which comes under the Sequence Class. It is an immutable collection and hence when modified the original List does not get updated a new List is instead created.
+
+Creating a List
+
+val fruitlist = List(“orange”, “banana”, “apple”, “grape”)
+Fruitlist.foreach(println)
+
+Constructing Lists Using :: and nil
+
+:: is a method known as “cons” which takes two arguments. The first argument is the head and is a single element. The second argument is a tail which is another List. Nil (nil) is used to represent an empty List and is always used when constructing a list with ::
+
+element x::element xs
+
+The above represents a List whose first element x and the rest of the elements are the elements of another List xs.
+To define the List “fruitlist” above, we can remove the parenthesis.  val fruitlist = “orange”::”banana”::”apple”::”grape”::Nil
+fruitlist.foreach(println)
+
+Lists can also be combined into a single List:
+
+val fruitlist = “orange”::List(“banana”, “apple”, “grape”)
+Fruitlist.foreach(println)
+
+
+Remember, as Lists are immutable, each time we need to modify them, we need to create a new List.
+
+val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+fruitList2.foreach(println)
+
+Appending elements to List
+The :+ method can be used to append elements to the end of a List
+ val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+fruitList2.foreach(println)
+
+Prepending elements to List
+
+“Cons” can be used to prepend an element to the beginning of a List 
+val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+val fruitList3 = "watermelon"::fruitList2
+fruitList3.foreach(println)
+
+The +: method can also be used to prepend elements to the beginning of a List
+
+val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+val fruitList3 = "watermelon"::fruitList2
+val fruitList4 = "mango" +: fruitList3
+fruitList4.foreach(println)
+
+List Concatentation
+Two concatenate or merge two Lists, the ::: method can be used.
+
+val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+val fruitList3 = "watermelon"::fruitList2
+val fruitList4 = "mango" +: fruitList3
+val twoFruits = "pear"::"apricot"::Nil
+val fruitList5 = twoFruits ::: fruitList4
+fruitList5.foreach(println)
+
+Heads & Tails
+To get the head and tail of a list or any collection for that matter, we use the head and tail method.
+
+val fruitList = "orange"::"banana"::"apple"::"grape"::Nil
+val fruitList2 = fruitList :+ "peach"
+val fruitList3 = "watermelon"::fruitList2
+val fruitList4 = "mango" +: fruitList3
+val twoFruits = "pear"::"apricot"::Nil
+val fruitList5 = twoFruits ::: fruitList4
+
+val getHead = fruitList5.head
+val getTail = fruitList5.tail
+
+println(getHead)
+println(getTail)
+
+The tail does not refer to the last element, rather, it refers to the remaining list after the head. This is why when we called the tail method above, we got the complete list excluding the head element, i.e., pear.
+
+ListBuffer
+List’s mutable counterpart collection is ListBuffer. It works exactly like a List but is used when multiple modifications are required as it updates the existing List instead of creating a new one. It is common practice to convert a ListBuffer into a List when you are done manipulating the elements.
+
+Vectors
+Like Lists, Vectors are another immutable collection of sequence type. They differ in the fact that Lists are linear while Vectors are indexed. What this means is that if you want to access a central element in a List, the compiler has to start from the beginning and linearly progress through the List until it finds the element you are trying to access. However, when you want to access a central element in a Vector, the compiler can directly go to that index and access the element in constant time.
+While Lists should be used when you only plan to manipulate the head element (first element), Vectors provide efficient access when you want to manipulate elements beyond the head.
+
+Creating a Vector
+Vectors can be created using the Vector keyword followed by ().
+
+val numVector = Vector(1,2,3,4,5)
+
+numVector.foreach(println)
+
+Initializing an Empty Vector
+If you don’t want to populate your vector during declaration, you can initialize an empty vector using the empty method. The empty method doesn’t take any arguments.
+
+val emptyVector = Vector.empty
+
+Accessing an Element
+You can access an element by mentioning the Vector name followed by the index of the element in ().
+
+vectorName(index of element)
+
+val patternVector = Vector("a~a", "b~b", "c~c")
+val pattern = patternVector(1)
+
+println(pattern)
+
+Appending an Element
+Like Lists, you can append elements to a Vector using the :+ method.
+
+val patternVector = Vector("a~a", "b~b", "c~c")
+val patternVector2 = patternVector :+ "d~d"
+patternVector2.foreach(println)
+
+Prepending an Element
+Prepending an element to the start of a Vector can be done using the +: method.
+
+val patternVector = Vector("a~a", "b~b", "c~c")
+val patternVector2 = patternVector :+ "d~d"
+val patternVector3 = "1~1" +: patternVector2
+patternVector3.foreach(println)
+
+Vector Concatenation
+Vector concatenation is the merging of two Vectors. A new Vector can be created of the elements to be added and simply merge the new Vector with the old one.
+Vector concatenation is done using the ++ method.
+
+val patternVector = Vector("a~a", "b~b", "c~c")
+val patternVector2 = patternVector :+ "d~d"
+val patternVector3 = "1~1" +: patternVector2
+val tempVector = Vector("e~e","f~f")
+val patternVector4 = patternVector3 ++ tempVector
+patternVector4.foreach(println)
+
+Creating a Range of Numbers
+
+A Range is also a collection in itself. It is an ordered sequence of integers with the integers being equally spread apart from one another by an equal interval.
+We can create a Range by fixing “to” between the “lower limit” and “upper limit” of a Range.
+
+lowerLimit to upperLimit
+
+val myFirstRange =  1 to 10
+println(myFirstRange)
+myFirstRange.foreach(println)
+
+
+Specifying an Interval Using by
+Specify the interval between each element using “by”.
+
+val oddRange = 1 to 10 by 2
+oddRange.foreach(println)
+
+Creating a Range Using until
+Use “until” fixed between the “lower limit” and the excluded “upper limit”.
+
+lowerLimit until upperLimit
+
+val notLast = 1 until 3
+notLast.foreach(println)
+
+LazyLists
+A LazyList is an immutable sequence type collection very similar to Lists. What makes a LazyList lazy is that it only computes required elements, allowing it to be infinitely long. Other than this difference, LazyLists have the same performance characteristics as Lists
+Similar to the :: method used for creating Lists, LazyLists are created with the #:: method. The first element is the head while all other elements are collectively known as the tail. We use LazyList.empty to end a LazyList, which is equivalent to the Nil used for ending a List.
+
+Head #:: tail #:: LazyList.empty
+
+val myFirstLazyList = 1.5 #:: 2.5 #:: 3.5 #:: LazyList.empty
+myFirstLazyList.foreach(println)
+
+// List output
+val wholeList = "orange"::"banana"::"apple"::"grape"::Nil
+print(wholeList) // List(orange, banana, apple, grape)
+
+// LazyList output
+val wholeLazyList = "orange" #:: "banana" #:: "apple" #:: "grape" #:: LazyList.empty
+print(wholeLazyList) // LazyList(<not computed>)
+
+ Streams
+LazyList was introduced in the latest version of Scala, i.e., 2.13.0. In older versions, instead of LazyLists, Streams are used. They are identical to LazyLists in almost every way. The only difference is that while LazyLists are completely lazy, Streams compute the head element even when not required.
+
+Control Structures 
+￼
+Imperative vs. Declarative
+Imperative programming is how to execute a sequence of code and declarative programming is what a sequence of code should do.
+Scala’s control structures are if, while, for, try, match, and function calls.
+￼
+￼
+
+var fileName = "default name"
+if (!input.isEmpty) {
+  fileName = input
+}
+println(fileName)
+
+val fileName =
+  if (!input.isEmpty) input
+  else "Default Name"
+
+println(fileName)
+
+val input = scala.io.StdIn.readLine()
+val fileName = if (!input.isEmpty) input else "Default Name"
+
+
+
+￼
+
+￼
+val alwaysOne = 1
+while (alwaysOne != 1) {
+    println(s"Using while: $alwaysOne")
+}
+
+val alwaysOne = 1
+do {
+  println(s"Using do-while: $alwaysOne")
+} while (alwaysOne!= 1)
+
+￼
+
+for (generator) {
+	block of code
+}
+
+Generator: (variable <- greater expression)
+
+for (i <- 1 to 5) {
+  println(s"iteration $i")
+}
+
+val colorArray = Array("red", "blue", "yellow")
+
+for (color <- colorArray) {
+  println(color)
+}
+
+val colorArray = Array("red", "blue", "yellow")
+
+For loop:
+
+for (color <- colorArray) {
+  println(color.toUpperCase)
+}
+
+Use the yield expression which does exactly what its name implies: yield the return value.
+
+val variableName = for (variable <- generator expression) {
+	block of code
+} yield body
+
+val colorArray = Array("red", "blue", "yellow")
+
+val newArray =
+  for(color <- colorArray)
+    yield color.toUpperCase
+
+for (newColor <- newArray)
+  println(newColor)
+
+Filtering with if
+Adding an if expression to the for generator allows for filtering out the elements that aren’t of interest.
+
+val intArray = Array(1,2,3,4,5,6,7,8,9,10)
+
+val evenArray =
+  for (element <- intArray if element % 2 == 0)
+    yield element
+
+for(i <- evenArray)
+  println(i)
+
+
+Exception Handling:
+Try/Catch:
+try {
+	block of code
+} catch {
+	case ex: type of exception =>
+	case ex: type of exception =>
+}
+
+val dividend = 10
+val divisor = 0
+
+try {
+  val quotient = dividend/divisor
+  println(quotient)
+}
+catch {
+  case ex: ArithmeticException => println("Dividing by zero is not allowed")
+}
+
+Pattern Matching with Match
+A pattern match consists of a list of alternative cases which are made up of a pattern and a corresponding expression.
+
+Using match
+Evaluated by taking the object to be matched and comparing it with each pattern in the order they are listed. The first pattern to match the object expression is selected and the corresponding expression is evaluated.
+
+var food = “peanut butter”
+
+food match {
+  case "fish" => println("chips")
+  case "peanut butter" => println("jelly")
+  case "hamburger" => println("french fries")
+  case _ => println("Try a new food!")
+}
+
+Types of Patterns
+Wildcard
+Wildcard (_) is a pattern which matches with any object. It is often used as a default pattern to avoid runtime errors.
+
+val wildcardPattern = 75
+wildcardPattern match {
+  case _ => println(s"You said $wildcardPattern")
+}
+
+Constant
+The food example in the previous lesson was matching constant patterns. A constant pattern matches with itself. Literals can be used as a constant.
+
+val constantPattern: Any = 75
+
+constantPattern match {
+  case 75 => println("case1")
+  case "hello" => println("case2")
+  case true => println("case3")
+  case _ => println(s"You said $constantPattern")
+}
+
+NOTE: When declaring our constantPattern variable, we need to specify that it’s of type Any. The reason for this is that our patterns are of different types and when the value of constantPattern goes through each case, it will not be able to compare itself with a pattern of a different type which will result in an error and pre-mature termination of the program.
+
+
+
+
+
+
+
+
+
+
+
 
 
