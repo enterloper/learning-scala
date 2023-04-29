@@ -1124,7 +1124,6 @@ Constant
 The food example in the previous lesson was matching constant patterns. A constant pattern matches with itself. Literals can be used as a constant.
 
 val constantPattern: Any = 75
-
 constantPattern match {
   case 75 => println("case1")
   case "hello" => println("case2")
@@ -1134,15 +1133,117 @@ constantPattern match {
 
 NOTE: When declaring our constantPattern variable, we need to specify that it’s of type Any. The reason for this is that our patterns are of different types and when the value of constantPattern goes through each case, it will not be able to compare itself with a pattern of a different type which will result in an error and pre-mature termination of the program.
 
+Variable
+A variable pattern is similar to a wildcard pattern in that it matches with any object. It differs by binding the object to a variable. Any variable name can be a variable pattern.
+
+val variablePattern = 75
+variablePattern match {
+  case myVariable  => println(s"$myVariable has been bound")
+}
+
+Constructor
+A Constructor pattern matches with a constructor. Constructors are used for creating instances (objects) of a user-built class
+
+Example: The code below shows the incredible depth of pattern matching in Scala. The pattern above checks if the object is of class binaryOperators and then further checks if the parameters of the object match that of the constructor ("+", e, Number()) and then even further checks if the parameters of the parameters match the constructor (Number(0)).
+
+constructorPattern match {
+  case binaryOperators("+", e, Number(0))  => println("constructor match")
+}
+
+Sequence
+A Sequence pattern matches with a sequence type collection such as an Array or a List.
+
+val sequencePattern = Array(1,2,3)
+sequencePattern match {
+  case Array(0,_,_)  => println("case1")
+  case Array(1,_,_)  => println("case2")
+  case Array(_,_,0)  => println("case3")
+  case _ => println("default")
+}
+
+Tuple
+A tuple pattern matches with a tuple. A tuple is simply an ordered set of elements.
+
+val·tuplePattern:·Any·=·(3,"word",true)
+
+tuplePattern·match·{·
+  case·(0,"word",_)··=>·println("case1")
+  case·(1,_,true)··=>·println("case2")
+  case·(3,_,true)··=>·println("case3")
+  case·_·=>·println("default")
+}
+
+Typed
+A Typed pattern matches with its type of object.
+
+val typedPattern: Any = "blah"
+typedPattern match {
+  case stringType: String  => println("case1")
+  case intType: Int  => println("case2")
+  case boolType: Boolean  => println("case3")
+  case _ => println("default")
+}
+
+Functions
+ def sum(x: Double, y: Double): Double ={
+  x+y
+}
+
+Syntax
+* def is the keyword used for defining a function the same way val and var are used for defining variables.
+* sum is the name of the function which you get to choose yourself. Make sure the name is meaningful to the functionality of the function.
+* sum is followed by () in which you define the function parameters separated by commas. Parameters specify the type of input to be given to the function.
+* (x: Double, y: Double) is telling us that our function takes two parameters. The first one is named x and must be of type Double. The second one is named y and must also be of type Double.
+* After defining the parameters, we define the return type of the function which in our case is Double and is done by inserting : Double after the ().
+
+def functionName(parameters): returnType = {
+  function body }
+
+def sum(x: Int, y: Int): Int = {
+  x+y
+}
+val total = sum(2,3)
+println(total)
 
 
+Substitution Model 
+￼
 
+The substitution model is simply evaluating an expression by reducing it to a value, but how do we know the order in which the expressions are to be evaluated. For this, the substitution model is divided into two evaluation strategies: call-by-value and call-by-name.
 
+Call-by-value (CBV)
+Call-by-value copies the actual arguments of a function to its formal parameters. In our example above, 4+1 is the actual argument which is being copied to the formal parameter y. As CBV copies all the arguments, it needs to evaluate them until they reduce to a value which is then used by the function. The flow diagram above is showing how CBV evaluates the function call squareSum(2, 4+1).
+The advantage of CBV is that it evaluates every function argument only once.
+Call-by-Name (CBN)
+Call-by-name uses the actual argument as is in the function.
+￼
 
+Simply put, CBV will evaluate every expression to its final value before calling the function, regardless of if the function body needs it or not. CBN, on the other hand, will only take the expressions required by the body of the function and pass them to the function just as you passed them. It then reduces the expressions to their final value in the function body.
 
+Call-by-Name function:
 
+example:
+ A function loop which has zero parameters and simply returns itself; this function will infinitely run and never terminate. Another function accessFirst which has two parameters and simply returns the first one. However, we have enforced the second parameter to be evaluated using CBN by inserting => after the name of the second parameter.
+Result is a warning that loop is simply returning itself resulting in an infinite loop while the actual output is 1. This is because CBN only evaluates the parameters which are required by the function body, hence, loop is never evaluated, and the compiler isn’t stuck in an infinite loop.
 
+def loop :Int = loop
+def accessFirst(x: Int, y: => Int) = x
+val result = accessFirst(1, loop)
+println(result)
 
+Same code with CBV:
 
+def loop :Int = loop
+def accessFirst(x: Int, y: Int) = x
+val result = accessFirst(1,loop)
+println(result)
 
+Result is a runtime error because the code was not terminated. CBV reduces each expression, regardless of whether the function body will use it or not. This causes the compiler to get stuck in an infinite loop as the loop function never terminates.
 
+￼
+
+Recursion
+Recursion is the process of breaking down an expression into smaller and smaller expressions until you’re able to use the same algorithm to solve each expression.
+A recursive function is made up of an if-else expression. The if represents the base case which is the smallest possible expression on which an algorithm will run and the else represents the recursive call; when a function calls itself, it is known as a recursive call. The recursive function will keep calling itself in a nested manner without terminating the call until it is equivalent to the base case in which case the algorithm will be applied, and all the function calls will move in an outward manner, terminating before moving on to the next one, reducing themselves until they reach the original function call.
+
+￼
