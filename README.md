@@ -1,19 +1,19 @@
 Scala Notes
 Features of Scala
-* Type Inference
-    * Deduction of the data types based on the context in which an object has been written is default behavior. Scala can infer types without them being explicitly stated.
-* Immutability
-    * Variables in Scala are immutable by default. This helps in concurrency control managing simultaneous (concurrent) operations so they avoid conflicts with each other.
-* Lazy Computation
-    * Scala only evaluates an expression when required, this feature increases performance through the reduction of compile time.
-* Case Classes & Pattern Matching
-    * Case classes are regular classes with the added feature of being immutable. This is especially helpful in modeling immutable data. Furthermore case classes are useful for pattern matching (checking a value against a pattern and deconstructing it into its constituent parts).
-* String Interpolation
-    * String interpolation methods allow developers to embed variables directly inside a string literal allowing for the creation of strings through data.
-* Higher-Order Functions
-    * Functions which take other functions as arguments. These functions can return functions as well as simple data types.
-* Traits
-    * Traits are a collection of abstract and non-abstract methods. While classes and objects can only inherit from a single class, those same classes and objects can inherit from multiple traits.
+	•	Type Inference
+	•	Deduction of the data types based on the context in which an object has been written is default behavior. Scala can infer types without them being explicitly stated.
+	•	Immutability
+	•	Variables in Scala are immutable by default. This helps in concurrency control managing simultaneous (concurrent) operations so they avoid conflicts with each other.
+	•	Lazy Computation
+	•	Scala only evaluates an expression when required, this feature increases performance through the reduction of compile time.
+	•	Case Classes & Pattern Matching
+	•	Case classes are regular classes with the added feature of being immutable. This is especially helpful in modeling immutable data. Furthermore case classes are useful for pattern matching (checking a value against a pattern and deconstructing it into its constituent parts).
+	•	String Interpolation
+	•	String interpolation methods allow developers to embed variables directly inside a string literal allowing for the creation of strings through data.
+	•	Higher-Order Functions
+	•	Functions which take other functions as arguments. These functions can return functions as well as simple data types.
+	•	Traits
+	•	Traits are a collection of abstract and non-abstract methods. While classes and objects can only inherit from a single class, those same classes and objects can inherit from multiple traits.
 
 Variables in Scala
 Declaring a variable
@@ -79,17 +79,17 @@ In a type hierarchy, the more generic types are at the top and as you go lower i
 
 Any
 At the top of the type hierarchy in Scala, is the type “Any”, this super-type defines certain universal methods such as equals, hashCode, and toString.
-￼
+
 Any has two subclasses AnyVal and AnyRef.  There are nine main value types supported in Scala:
-* Double
-* Float
-* Long
-* Int
-* Short
-* Byte
-* Char
-* Unit
-* Boolean
+	•	Double
+	•	Float
+	•	Long
+	•	Int
+	•	Short
+	•	Byte
+	•	Char
+	•	Unit
+	•	Boolean
 
 AnyRef represents reference types. Any type that is not a value type is a reference type, including types defined by users not predefined in Scala.
 
@@ -128,7 +128,7 @@ val myBooleanVariable: Boolean = true
 Type Casting
 Type casting is an approach which allows changing the data type of a variable or an expression from one to another.
 One thing to remember is that not every data type can be converted to a data type of choice
-￼
+
 The elements more or less remain the same and the value is simply altered with respect to the new data type.
 
 Long -> Float
@@ -164,7 +164,7 @@ println(newType) // -> 65
 
 Strings and Other Literals
 
-￼
+
 
 Reviewing the data type hierarchy above, it can be observed that type String does not fall under type AnyVal. So what is type String? The answer is literals.
 
@@ -213,15 +213,24 @@ println(charLiteral)
 println(smile)
 
 Escape sequences, as shown in the table below, also represent character literals.
-Literal	Meaning
-\n	linefeed
-\b	backspace
-\t	tab
-\f	form feed
-\r	carriage return
-\"	double quote
-\’	single quote
-\\	backslash
+Literal
+Meaning
+\n
+linefeed
+\b
+backspace
+\t
+tab
+\f
+form feed
+\r
+carriage return
+\"
+double quote
+\’
+single quote
+\\
+backslash
 
 Examples: println("separate\nlines")     //using \n to end the line
 println("tab\tbetween\twords") //using \t to insert a tab
@@ -283,14 +292,14 @@ There are two ways to invoke or call a function, here’s the syntax for each: �
 objectName methodName arguments
 
 Operators are symbols that perform operations used for modifying or manipulating data. Scala provides the following five types of operators:
-* Arithmetic Operators
-* Relational Operators
-* Logical Operators
-* Bitwise Operators
-* Assignment Operators
+	•	Arithmetic Operators
+	•	Relational Operators
+	•	Logical Operators
+	•	Bitwise Operators
+	•	Assignment Operators
 
 Operators usually follow an infix notation. The infix notation is where the operator is situated between two operands. Operands are the data objects that the operator is performing an operation on.
-￼
+
 After the operator has performed its specific operation, the output is the result of the operation.
 
 NOTE: In Scala operators are not special language syntax; any method can be an operator. What makes a method an operator is how you use it. When we wrote string1.indexOf('W') in the previous lesson, indexOf was not an operator. But when we wrote string1 indexOf 'W', indexOf was an operator, because we’re using it in operator notation.
@@ -321,13 +330,23 @@ export interface Question {
 }
 
 Types of Bitwise Operators
-Operator	Name	Use
-&	Bitwise AND	If the corresponding bit in both operands is 1 it will give a 1, else 0
-|	Bitwise OR	If the corresponding bit in at least one operand is 1 it will give a 1 else 0
-^	Bitwise XOR	If the corresponding bit in only one operand is 1 it will give a 1 else 0
-~	Bitwise Ones Complement	Copies a bit to the result after reversing it
+Operator
+Name
+Use
+&
+Bitwise AND
+If the corresponding bit in both operands is 1 it will give a 1, else 0
+|
+Bitwise OR
+If the corresponding bit in at least one operand is 1 it will give a 1 else 0
+^
+Bitwise XOR
+If the corresponding bit in only one operand is 1 it will give a 1 else 0
+~
+Bitwise Ones Complement
+Copies a bit to the result after reversing it
 
-￼
+
 
 
 val A = 12
@@ -340,12 +359,18 @@ println(A | B) bitwise conversion == 1100 | 101 -> 1101 == 13
 println(A ^ B) bitwise conversion == 1100 ^ 101 -> 1001 == 9
 
 Assignment Operators (Must use on values initiated with “var”)
-Operator	Use
-+=	Adds two operands and assigns the result to the left operand
--=	Subtracts the second operand from the first and assigns the result to the left operand
-*=	Multiplies both operands and assigns the result to the left operand
-/=	Divides the first operand by the second operand and assigns the result to the left operand
-%=	Finds the remainder after division of one number by another and assigns the result to the left operand
+Operator
+Use
++=
+Adds two operands and assigns the result to the left operand
+-=
+Subtracts the second operand from the first and assigns the result to the left operand
+*=
+Multiplies both operands and assigns the result to the left operand
+/=
+Divides the first operand by the second operand and assigns the result to the left operand
+%=
+Finds the remainder after division of one number by another and assigns the result to the left operand
 var A = 10
 var B = 7
 
@@ -360,9 +385,9 @@ println(A) => 17
 Strings
 String Interpolation
 There are three inbuilt interpolation methods:
-1. s
-2. f
-3. raw
+	0.	s
+	0.	f
+	0.	raw
 
 The s String Interpolator
 For string interpolation with s, we prepend an s to any string literal. This allows us to use variables inside a string.
@@ -371,7 +396,7 @@ val country = "Japan"
 println(s"I want to visit $country!")
 println(s"3 + 4 = ${3 + 4}")
 
-￼
+
 
 The f String Interpolator
 The f string interpolator is Scala’s printf. For string interpolation with f, we prepend an f to any string literal. This allows us to create formatted strings. When using the f interpolator, all references to variables and expressions should be followed by a printf-style format string, like %f.
@@ -381,17 +406,22 @@ println(f"the value of pi is $pi%.2f")
 
 In the code above, f"the value of pi is ＄pi%.2f" is a processed string literal. The f prepended before the string is letting the compiler know that the string should be processed using the f interpolator. pi is our variable identifier and %.2f is our format specifier and is formatting the string by telling the compiler to only print the floating-point number pi up to two decimal places.
 
-￼
 
-￼
+
+
 
 Flag
  Flags are general modifiers and are mostly used to format integers and floating-point numbers. Below is a list of flags and what they are used for.
-Flag	Use
--	left justify
-+	Add a + sign
-0	Add padded zeros
-,	Add a local-specific grouping separator
+Flag
+Use
+-
+left justify
++
+Add a + sign
+0
+Add padded zeros
+,
+Add a local-specific grouping separator
 
 Width The width specifies the minimum length of the output. For example, if we say %10d, we mean that the output of the integer should be a minimum of 10 characters. To fulfill our requirement, the compiler will insert spaces before our argument until it is 
 10 characters long, pushing the argument further right.
@@ -406,11 +436,16 @@ Precision can only be used on floating-point numbers and simply tells you how ma
 
 Conversion-Characters
 Conversion-characters do the actual formatting and determine how the argument is to be formatted. Below are some common ones.
-Character	Use
-s	formats strings
-d	formats decimal integers
-f	formats floating-point numbers
-t	formats date/time values
+Character
+Use
+s
+formats strings
+d
+formats decimal integers
+f
+formats floating-point numbers
+t
+formats date/time values
 
 val insertSeparator = 1000000
 
@@ -442,7 +477,7 @@ First
 Second
 
 println(raw"With Raw:\nFirst\nSecond") => With Raw:\nFirst\nSecond
-￼
+
 
 Creating Multiline Strings
 val multilineString = "This is a \nmultiline string \nconsisting of \nmultiple lines"
@@ -451,7 +486,7 @@ Altenatively, one could use the three successive opening and closing quotation m
 “””Word
 word
 word”””
-￼
+
 
 Regular Expressions (Finding Patterns in Strings)
 
@@ -603,12 +638,12 @@ Immutable Collections
 Immutable collections cannot be updated. When you add, remove, or manipulate an element in an immutable collection, you are creating a new collection and leaving the old one unchanged.
 Sequences, Sets, and Maps
 The collection library takes on a hierarchical structure. At the top of the library, there are three main categories of collection classes under which different collections lie:
-* Sequences - Seq
-* Sets - Set
-* Maps - Map
+	•	Sequences - Seq
+	•	Sets - Set
+	•	Maps - Map
 All three classes contain both mutable and immutable collections.
 Remember, Seq here would be acting as a blueprint with which you can create objects that represent sequences.
-￼
+
 
 Sequences
 Collections which are part of the Seq class, store elements at fixed index positions, with the index starting at 0.
@@ -629,29 +664,29 @@ Map((“a”, 25) (“b”,50) (“c”, 75))
 apply
 apply is a method which has a single parameter and is available to all the collections in the collection library.
 
-- Seq
-    - For sequence collections, the argument passed to apply specifies an index. apply returns the element at the specified index.
+	⁃	Seq
+	⁃	For sequence collections, the argument passed to apply specifies an index. apply returns the element at the specified index.
 
 val seqCollection = Seq(2,4,6,8)
 val result = seqCollection.apply(1)
 print(result) // true
 
-- Map
-    - For map collections, the argument passed to apply specifies a key. apply returns the value of the specified key.
+	⁃	Map
+	⁃	For map collections, the argument passed to apply specifies a key. apply returns the value of the specified key.
 
 	     val mapCollection = Map(("a",25),("b",50),("c",75))
 	     val result = mapCollection.apply("c")
 
 	     print(result) // 75
 
-- Sequences
-- The sequence class is further divided into two classes IndexedSeq and LinearSeq.
-- IndexSeq and LinearSeq do not add new operations to the Seq class, but each offers different performance characteristics.
--  Collections of the LinearSeq class have efficient head and tail operations.
-- What this means is that the collection is structured in such a way that it is not computationally difficult to access the head (first element) of the collection or the tail (last element) of the collection.
-- Furthermore, IndexedSeq collections have efficient apply and length operations.
+	⁃	Sequences
+	⁃	The sequence class is further divided into two classes IndexedSeq and LinearSeq.
+	⁃	IndexSeq and LinearSeq do not add new operations to the Seq class, but each offers different performance characteristics.
+	⁃	 Collections of the LinearSeq class have efficient head and tail operations.
+	⁃	What this means is that the collection is structured in such a way that it is not computationally difficult to access the head (first element) of the collection or the tail (last element) of the collection.
+	⁃	Furthermore, IndexedSeq collections have efficient apply and length operations.
 
-￼
+
 
 Collection Methods
 
@@ -694,6 +729,7 @@ colorArray.foreach(println) // prints the colors on separate lines
 
 Range
 Range populates an array with a starting value (Int) and takes an end number.
+
 val array1 = Array.range(0, 5) // range(start, number of elements)
 array1.foreach(println) // prints 0-5 on separate lines
 
@@ -742,8 +778,6 @@ newArrayBuff += 15
 newArrayBuff += 78 newArrayBuff += 4
 newArrayBuff += 32
 newArrayBuff += 11
-
-// Driver Code
 newArrayBuff.foreach(println)
 println(newArrayBuff)
 
@@ -800,7 +834,6 @@ newArrayBuff.remove(4)
 newArrayBuff.clear() //Remove all the elements from newArrayBuff
 
 newArrayBuff.foreach(println)
-
 
 Lists in Scala
 Lists in Scala is a collection which comes under the Sequence Class. It is an immutable collection and hence when modified the original List does not get updated a new List is instead created.
@@ -985,12 +1018,12 @@ print(wholeLazyList) // LazyList(<not computed>)
 LazyList was introduced in the latest version of Scala, i.e., 2.13.0. In older versions, instead of LazyLists, Streams are used. They are identical to LazyLists in almost every way. The only difference is that while LazyLists are completely lazy, Streams compute the head element even when not required.
 
 Control Structures 
-￼
+
 Imperative vs. Declarative
 Imperative programming is how to execute a sequence of code and declarative programming is what a sequence of code should do.
 Scala’s control structures are if, while, for, try, match, and function calls.
-￼
-￼
+
+
 
 var fileName = "default name"
 if (!input.isEmpty) {
@@ -1009,9 +1042,9 @@ val fileName = if (!input.isEmpty) input else "Default Name"
 
 
 
-￼
 
-￼
+
+
 val alwaysOne = 1
 while (alwaysOne != 1) {
     println(s"Using while: $alwaysOne")
@@ -1022,7 +1055,7 @@ do {
   println(s"Using do-while: $alwaysOne")
 } while (alwaysOne!= 1)
 
-￼
+
 
 for (generator) {
 	block of code
@@ -1190,11 +1223,11 @@ Functions
 }
 
 Syntax
-* def is the keyword used for defining a function the same way val and var are used for defining variables.
-* sum is the name of the function which you get to choose yourself. Make sure the name is meaningful to the functionality of the function.
-* sum is followed by () in which you define the function parameters separated by commas. Parameters specify the type of input to be given to the function.
-* (x: Double, y: Double) is telling us that our function takes two parameters. The first one is named x and must be of type Double. The second one is named y and must also be of type Double.
-* After defining the parameters, we define the return type of the function which in our case is Double and is done by inserting : Double after the ().
+	•	def is the keyword used for defining a function the same way val and var are used for defining variables.
+	•	sum is the name of the function which you get to choose yourself. Make sure the name is meaningful to the functionality of the function.
+	•	sum is followed by () in which you define the function parameters separated by commas. Parameters specify the type of input to be given to the function.
+	•	(x: Double, y: Double) is telling us that our function takes two parameters. The first one is named x and must be of type Double. The second one is named y and must also be of type Double.
+	•	After defining the parameters, we define the return type of the function which in our case is Double and is done by inserting : Double after the ().
 
 def functionName(parameters): returnType = {
   function body }
@@ -1207,7 +1240,7 @@ println(total)
 
 
 Substitution Model 
-￼
+
 
 The substitution model is simply evaluating an expression by reducing it to a value, but how do we know the order in which the expressions are to be evaluated. For this, the substitution model is divided into two evaluation strategies: call-by-value and call-by-name.
 
@@ -1216,7 +1249,7 @@ Call-by-value copies the actual arguments of a function to its formal parameter
 The advantage of CBV is that it evaluates every function argument only once.
 Call-by-Name (CBN)
 Call-by-name uses the actual argument as is in the function.
-￼
+
 
 Simply put, CBV will evaluate every expression to its final value before calling the function, regardless of if the function body needs it or not. CBN, on the other hand, will only take the expressions required by the body of the function and pass them to the function just as you passed them. It then reduces the expressions to their final value in the function body.
 
@@ -1240,10 +1273,32 @@ println(result)
 
 Result is a runtime error because the code was not terminated. CBV reduces each expression, regardless of whether the function body will use it or not. This causes the compiler to get stuck in an infinite loop as the loop function never terminates.
 
-￼
+
 
 Recursion
 Recursion is the process of breaking down an expression into smaller and smaller expressions until you’re able to use the same algorithm to solve each expression.
 A recursive function is made up of an if-else expression. The if represents the base case which is the smallest possible expression on which an algorithm will run and the else represents the recursive call; when a function calls itself, it is known as a recursive call. The recursive function will keep calling itself in a nested manner without terminating the call until it is equivalent to the base case in which case the algorithm will be applied, and all the function calls will move in an outward manner, terminating before moving on to the next one, reducing themselves until they reach the original function call.
 
-￼
+Unlike a basic function, recursive functions require you to specify the type of the return value.
+
+
+def factorial(x: Int) : Int = {
+  if (x == 1)  1  else  (x * factorial(x-1))
+}
+
+print(factorial(4))
+
+Implementing Recursive Functions Using match
+
+The basic concept is exactly the same as before. There is a base case which is handled by the first case. The second case handles the recursive call. It is exactly like if-else with the first case representing if and the second case representing else.
+
+def factorial(x: Int) : Int =  x match{
+  case 1 => 1
+  case x => x * factorial(x-1)
+}
+print(factorial(4))
+
+def sum(numberList: List[Int], index: Int): Int = {
+  if(index < 0 ) 0
+  else numberList(index) + sum(numberList, index-1)
+}
